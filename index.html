@@ -15,7 +15,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js">
     </script>
     <style>
-        /* ===== CSS LENGKAP ===== */
+        /* ===== CSS LENGKAP (sama seperti sebelumnya) ===== */
         :root,
         [data-theme="dark"] {
             --bg-primary: #0b1120;
@@ -3004,15 +3004,16 @@
                     'Tgl Order', 'TGL TERIMA PART', 'Jumlah', 'Order ke Pabrik', 'Keterangan'
                 ];
                 var rows = fd.map(function(o, i) {
-                    // Jumlah di excel tetap angka tanpa satuan agar mudah diolah
+                    // Format Jumlah dengan satuan "hari" untuk Excel
                     var jml = o['JUMLAH'] || '';
+                    var jmlDisplay = jml ? jml + ' hari' : '';
                     return [i + 1, o['STATUS'] || '', o['TEKNISI'] || '', formatDateDisplay(o['TGL PENGAJUAN ORD'] ||
                             ''),
                         o['NO. SERVICE CASE'] || '', o['TYPE (IDNO)'] || '', o['NO. SERIE'] || '', o['NO GUDANG'] ||
                         '',
                         o['NAMA PART'] || '', o['QTY'] || '', o['PROD.'] || '', o['LAYANAN'] || '',
                         o['NAMA KONSUMEN'] || '', o['NO. HP'] || '', formatDateDisplay(o['Tgl Order'] || ''),
-                        formatDateDisplay(o['TGL TERIMA PART'] || ''), jml,
+                        formatDateDisplay(o['TGL TERIMA PART'] || ''), jmlDisplay,
                         o['ORDER KE PABRIK'] || '', o['Keterangan Pemenuhan'] || ''
                     ];
                 });
